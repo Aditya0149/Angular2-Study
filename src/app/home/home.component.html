@@ -1,0 +1,31 @@
+<div [style.font-size.px]="fontSize">
+  <div>
+    one way binding - ><br/>
+    component context : {{compContext}} <br/>
+    template context : {{btnName.value}} <br/>
+  </div>
+  <div>
+    one way property binding - > <button [disabled]="disableButon">Button</button>
+  </div>
+  <div>
+    one way event binding - > <button (click)="toggleButton()">{{buttonName}}</button>
+  </div>
+  <div>
+    two way binding - > <input #btnName [(ngModel)]="buttonName">
+  </div>
+
+  <!-- ng model inside -->
+  Set font color of child : <input [ngModel]="color" (ngModelChange)="color = $event"><br/>
+
+  <!-- Parent <-> Child communication
+        1. access child via view template varialble - #child
+        2. Custom two way binding - [(size)]="fontSize"
+        3. passing data to child element (one way binding) - [color]="color"
+        4. getting data from child (one way binding) - (customEvent)="fun($event)"
+      -->
+  Child via local variable #child : <button (click)="child.inc()">Increment</button>
+  <child-comp #child [(size)]="fontSize" [color]="color" (customEvent)="fun($event)"></child-comp>
+  fontsize = {{fsize}}<br/><br/><br/>
+  Type message and enter to send message to style component = <input #msg (keyup.enter)="sendMsg(msg.value);"><br/>
+  message_from_style_component = {{msg_from_style_component}}
+</div>

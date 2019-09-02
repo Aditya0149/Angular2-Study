@@ -1,0 +1,6 @@
+<p>
+  Change background <input [(ngModel)]="logger.backgroundColor">
+  <br/><br/><br/>
+  Type message and enter to send message to home component = <input #msg (keyup.enter)="msg_to_send = msg.value;"><br/>
+  message from home component = {{msg_from_home_component}}
+</p>
